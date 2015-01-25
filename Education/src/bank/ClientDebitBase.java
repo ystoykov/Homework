@@ -6,8 +6,6 @@ import java.util.Map;
 public class ClientDebitBase {
 	
 	protected static long allClientsDebit = 0;
-	protected static long paramIdGiv = (long)(Math.random()*10+151000001);
-	protected static long paramIdAccept = (long)(Math.random()*10+151000001);
 	
 	static Map<Long, Integer> clientDebitBase = new Hashtable<Long, Integer>();
 	
@@ -18,9 +16,9 @@ public class ClientDebitBase {
 			clientDebitBase.put(ClientOfBank.clientID, client.clientDebitAccount);
 			ClientDebitBase.allClientsDebit += clientDebitBase.get(ClientOfBank.clientID);
 		}
-	
+			
 		for(int i = 0; i < 5; i++){
-			Thread t = new Thread(new Transaction(paramIdGiv,paramIdAccept, 100));
+			Thread t = new Thread(new Transaction((long)(Math.random()*10+151000001),(long)(Math.random()*10+151000001), 100));
 			t.start();
 		}
 	}
